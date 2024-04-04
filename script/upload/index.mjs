@@ -15,7 +15,7 @@ app.use(cors());
 app.post("/upload", upload.single("file"), async (req, res) => {
   const vttPath = await convertToaudio(req.file.filename);
   const legendasFormatadas = await vttToObject(vttPath);
-  res.send(legendasFormatadas);
+  res.send({ legendas: legendasFormatadas, filename: req.file.filename});
 });
 
 app.listen(5000, () => {

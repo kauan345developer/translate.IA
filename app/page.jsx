@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div className="h-full">
       <div className="w-full grid place-items-center h-14 border border-color2">
-        <h1 className="text-2xl font-semibold text-gray-700">
+        <h1 className="text-2xl font-semibold text-gray-700 hover:text-red-600">
           Melhor site para Para aprender Ingles com videos
         </h1>
       </div>
@@ -13,7 +13,7 @@ export default function Home() {
         <form className="">
           <InputFile />
         </form>
-        <Video />
+        {/* <Video /> */}
         {/* <video controls >
           <source src="./video.mp4"/>
         </video> */}

@@ -3,6 +3,7 @@ import ffmpegPath from "@ffmpeg-installer/ffmpeg";
 import fs from "fs-extra";
 import path from "path";
 import { videoToText, getSubtitleFile } from "./configAssemblyAI.mjs";
+import { dir } from "console";
 
 ffmpeg.setFfmpegPath(ffmpegPath.path);
 
@@ -11,8 +12,10 @@ function convertToaudio(file) {
     const FileName = file.replace(".mp4", "");
     const audioUrl = `./uploads/audio/${FileName}.mp3`;
     const Filesubtitles = `./uploads/subtitles/${FileName}.vtt`;
-    
-    ffmpeg(`./uploads/video/${file}`)
+    const __dirname = path.resolve('../../');
+    const absoluteFilePath = path.join(__dirname, 'public', 'videos', file);
+
+    ffmpeg(absoluteFilePath)
       .audioCodec("libmp3lame")
       .save(audioUrl)
       .on("end", async () => {
